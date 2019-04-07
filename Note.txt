@@ -1,4 +1,10 @@
 https://www.youtube.com/watch?v=-MlNBTSg_Ww
 https://github.com/Annie-Huang/react-hooks-introduction
 https://github.com/academind/react-hooks-introduction
+https://academind.com/learn/react/react-hooks-introduction/
+
+What are "React Hooks"?
+Allow you to crate every component as a functional component
+Sharing (stateful) logic between components becomes easier
+
 

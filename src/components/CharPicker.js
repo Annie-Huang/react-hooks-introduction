@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import './CharPicker.css';
 
-class CharPicker extends Component {
-  state = { characters: [], isLoading: false };
+// class CharPicker extends Component {
+const CharPicker = props => {
+  // state = { characters: [], isLoading: false };
+  const [loadedChars, setLoadedChars] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   componentDidMount() {
     this.setState({ isLoading: true });

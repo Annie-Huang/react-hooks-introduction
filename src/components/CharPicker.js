@@ -32,7 +32,10 @@ const CharPicker = props => {
   //     });
   // }
   useEffect(() => {
-    this.setState({ isLoading: true });
+    // console.log('useEffect runs');
+    
+    // this.setState({ isLoading: true });
+    setIsLoading(true);
     fetch('https://swapi.co/api/people')
         .then(response => {
           if (!response.ok) {
@@ -42,16 +45,22 @@ const CharPicker = props => {
         })
         .then(charData => {
           const selectedCharacters = charData.results.slice(0, 5);
-          this.setState({
-            characters: selectedCharacters.map((char, index) => ({
-              name: char.name,
-              id: index + 1
-            })),
-            isLoading: false
-          });
+          // this.setState({
+          //   characters: selectedCharacters.map((char, index) => ({
+          //     name: char.name,
+          //     id: index + 1
+          //   })),
+          //   isLoading: false
+          // });
+          setIsLoading(false);
+          setLoadedChars(selectedCharacters.map((char, index) => ({
+            name: char.name,
+            id: index + 1
+          })));
         })
         .catch(err => {
           console.log(err);
+          setIsLoading(false);
         });
   });
 

@@ -20,7 +20,7 @@ const App = props => {
   //   this.setState({ side: side });
   // };
   const sideHandler = side => {
-    setState({ side: side });     // Don't have 'this' keyword because it is no longer a class component.
+    setState({ ...state, side: side });     // Don't have 'this' keyword because it is no longer a class component.
   };
 
   // charSelectHandler = event => {
@@ -29,14 +29,14 @@ const App = props => {
   // };
   const charSelectHandler = event => {
     const charId = event.target.value;
-    setState({ selectedCharacter: charId });
+    setState({ ...state, selectedCharacter: charId });
   };
 
   // destructionHandler = () => {
   //   this.setState({ destroyed: true });
   // };
   const destructionHandler = () => {
-    setState({ destroyed: true });
+    setState({ ...state, destroyed: true });
   };
 
   // render() {

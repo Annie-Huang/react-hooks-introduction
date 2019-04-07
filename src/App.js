@@ -90,22 +90,22 @@ const App = props => {
   let content = (
       <React.Fragment>
         <CharPicker
-            side={state.side}
-            selectedChar={state.selectedCharacter}
+            side={chosenSide}
+            selectedChar={selectedCharacter}
             onCharSelect={charSelectHandler}
         />
-        <Character selectedChar={state.selectedCharacter} />
+        <Character selectedChar={selectedCharacter} />
         <button onClick={sideHandler.bind(this, 'light')}>
           Light Side
         </button>
         <button onClick={sideHandler.bind(this, 'dark')}>Dark Side</button>
-        {state.side === 'dark' && (
+        {chosenSide === 'dark' && (
             <button onClick={destructionHandler}>DESTROY!</button>
         )}
       </React.Fragment>
   );
 
-  if (state.destroyed) {
+  if (destroyed) {
     content = <h1>Total destruction!</h1>;
   }
   return content;

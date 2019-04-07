@@ -70,9 +70,9 @@ const CharPicker = props => {
   ) {
     content = (
         <select
-            onChange={this.props.onCharSelect}
-            value={this.props.selectedChar}
-            className={this.props.side}
+            onChange={props.onCharSelect}
+            value={props.selectedChar}
+            className={props.side}
         >
           {loadedChars.map(char => (
               <option key={char.id} value={char.id}>

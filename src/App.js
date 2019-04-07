@@ -10,34 +10,58 @@ const App = props => {
   //   side: 'light',
   //   destroyed: false
   // };
+/*
   const [state, setState] = useState({
     selectedCharacter: 1,
     side: 'light',
     destroyed: false
   });
+*/
+  const [destroyed, setDestroyed] = useState(false);
+  const [selectedCharacter, setSelectedCharacter] = useState('1');
+  const [chosenSide, setChosenSide] = useState('light');
 
   // sideHandler = side => {
   //   this.setState({ side: side });
   // };
+/*
   const sideHandler = side => {
     setState({ ...state, side: side });     // Don't have 'this' keyword because it is no longer a class component.
   };
+*/
+  const sideHandler = side => {
+    setChosenSide(side);
+  };
+
 
   // charSelectHandler = event => {
   //   const charId = event.target.value;
   //   this.setState({ selectedCharacter: charId });
   // };
+/*
   const charSelectHandler = event => {
     const charId = event.target.value;
     setState({ ...state, selectedCharacter: charId });
   };
+*/
+  const charSelectHandler = event => {
+    const charId = event.target.value;
+    setSelectedCharacter(charId);
+  };
+
 
   // destructionHandler = () => {
   //   this.setState({ destroyed: true });
   // };
+/*
   const destructionHandler = () => {
     setState({ ...state, destroyed: true });
   };
+*/
+  const destructionHandler = () => {
+    setDestroyed(true);
+  };
+
 
   // render() {
   //   let content = (

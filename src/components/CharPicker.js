@@ -33,7 +33,7 @@ const CharPicker = props => {
   // }
   useEffect(() => {
     // console.log('useEffect runs');
-    
+
     // this.setState({ isLoading: true });
     setIsLoading(true);
     fetch('https://swapi.co/api/people')
@@ -62,7 +62,7 @@ const CharPicker = props => {
           console.log(err);
           setIsLoading(false);
         });
-  });
+  }, []);
 
   // render() {
   //   let content = <p>Loading characters...</p>;

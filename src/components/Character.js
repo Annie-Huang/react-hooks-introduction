@@ -127,4 +127,8 @@ const Character = props =>  {
   return content;
 };
 
-export default Character;
+// export default Character;
+
+// Class components can bail out from rendering when their input props are the same using PureComponent or shouldComponentUpdate.
+// Now you can do the same with function components by wrapping them in React.memo.
+export default React.memo(Character);

@@ -61,13 +61,16 @@ const Character = props =>  {
   //     this.fetchData();
   //   }
   // }
+  useEffect(() => {
+    fetchData();
+  }, [props.selectedChar]);
 
   // componentDidMount() {
   //   this.fetchData();
   // }
-  useEffect(() => {
+/*  useEffect(() => {
     fetchData();
-  }, []);
+  }, []);*/
 
   // componentWillUnmount() {
   //   console.log('Too soon...');

@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 
 import Summary from './Summary';
 
-class Character extends Component {
+// class Character extends Component {
+const Character = props =>  {
   state = { loadedCharacter: {}, isLoading: false };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('shouldComponentUpdate');
-    return (
-      nextProps.selectedChar !== this.props.selectedChar ||
-      nextState.loadedCharacter.id !== this.state.loadedCharacter.id ||
-      nextState.isLoading !== this.state.isLoading
-    );
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('shouldComponentUpdate');
+  //   return (
+  //     nextProps.selectedChar !== this.props.selectedChar ||
+  //     nextState.loadedCharacter.id !== this.state.loadedCharacter.id ||
+  //     nextState.isLoading !== this.state.isLoading
+  //   );
+  // }
 
   componentDidUpdate(prevProps) {
     console.log('Component did update');

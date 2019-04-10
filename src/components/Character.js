@@ -4,7 +4,10 @@ import Summary from './Summary';
 
 // class Character extends Component {
 const Character = props =>  {
-  state = { loadedCharacter: {}, isLoading: false };
+  // state = { loadedCharacter: {}, isLoading: false };
+  const [loadedCharacter, setLoadedCharacter] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
 
   // shouldComponentUpdate(nextProps, nextState) {
   //   console.log('shouldComponentUpdate');
@@ -62,25 +65,42 @@ const Character = props =>  {
     console.log('Too soon...');
   }
 
-  render() {
-    let content = <p>Loading Character...</p>;
+  // render() {
+  //   let content = <p>Loading Character...</p>;
+  //
+  //   if (!this.state.isLoading && this.state.loadedCharacter.id) {
+  //     content = (
+  //       <Summary
+  //         name={this.state.loadedCharacter.name}
+  //         gender={this.state.loadedCharacter.gender}
+  //         height={this.state.loadedCharacter.height}
+  //         hairColor={this.state.loadedCharacter.colors.hair}
+  //         skinColor={this.state.loadedCharacter.colors.skin}
+  //         movieCount={this.state.loadedCharacter.movieCount}
+  //       />
+  //     );
+  //   } else if (!this.state.isLoading && !this.state.loadedCharacter.id) {
+  //     content = <p>Failed to fetch character.</p>;
+  //   }
+  //   return content;
+  // }
+  let content = <p>Loading Character...</p>;
 
-    if (!this.state.isLoading && this.state.loadedCharacter.id) {
-      content = (
+  if (!isLoading && loadedCharacter.id) {
+    content = (
         <Summary
-          name={this.state.loadedCharacter.name}
-          gender={this.state.loadedCharacter.gender}
-          height={this.state.loadedCharacter.height}
-          hairColor={this.state.loadedCharacter.colors.hair}
-          skinColor={this.state.loadedCharacter.colors.skin}
-          movieCount={this.state.loadedCharacter.movieCount}
+            name={loadedCharacter.name}
+            gender={loadedCharacter.gender}
+            height={loadedCharacter.height}
+            hairColor={loadedCharacter.colors.hair}
+            skinColor={loadedCharacter.colors.skin}
+            movieCount={loadedCharacter.movieCount}
         />
-      );
-    } else if (!this.state.isLoading && !this.state.loadedCharacter.id) {
-      content = <p>Failed to fetch character.</p>;
-    }
-    return content;
+    );
+  } else if (!isLoading && !loadedCharacter.id) {
+    content = <p>Failed to fetch character.</p>;
   }
-}
+  return content;
+};
 
 export default Character;

@@ -55,6 +55,8 @@ const Character = props =>  {
         });
   };
 
+  // useEffect Hook as componentDidMount, componentDidUpdate, and componentWillUnmount combined.
+
   // componentDidUpdate(prevProps) {
   //   console.log('Component did update');
   //   if (prevProps.selectedChar !== this.props.selectedChar) {
@@ -63,6 +65,10 @@ const Character = props =>  {
   // }
   useEffect(() => {
     fetchData();
+    return () => {
+      // It will run right before the useEffect got run the next time
+      console.log('Cleaning up...');
+    }
   }, [props.selectedChar]);
 
   // componentDidMount() {
@@ -75,6 +81,13 @@ const Character = props =>  {
   // componentWillUnmount() {
   //   console.log('Too soon...');
   // }
+  // If you only want to do componentWillUnmount, follow this:
+  useEffect(() => {
+    return () => {
+      console.log('component did unmount');
+    }
+  }, []);
+
 
   // render() {
   //   let content = <p>Loading Character...</p>;

@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
 // use 'use' prefix to imply this is a hook. You don't have to but will be easy to read later.
-export const useHttp = () => {
+export const useHttp = (url) => {
     const [isLoading, setIsLoading] = useState(false);
     const [fetchedData, setFetchedData] = useState(null);
 
-    fetch('https://swapi.co/api/people')
+    // fetch('https://swapi.co/api/people')
+    fetch(url)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch.');
@@ -36,4 +37,6 @@ export const useHttp = () => {
             console.log(err);
             setIsLoading(false);
         });
+
+    return [isLoading, fetchedData];
 };

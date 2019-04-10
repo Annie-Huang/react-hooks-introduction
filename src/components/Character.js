@@ -18,6 +18,39 @@ const Character = props =>  {
   //   );
   // }
 
+  // fetchData = () => {
+  const fetchData = () => {
+    console.log(
+        'Sending Http request for new character with id ' +
+        this.props.selectedChar
+    );
+    this.setState({ isLoading: true });
+    fetch('https://swapi.co/api/people/' + this.props.selectedChar)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Could not fetch person!');
+          }
+          return response.json();
+        })
+        .then(charData => {
+          const loadedCharacter = {
+            id: this.props.selectedChar,
+            name: charData.name,
+            height: charData.height,
+            colors: {
+              hair: charData.hair_color,
+              skin: charData.skin_color
+            },
+            gender: charData.gender,
+            movieCount: charData.films.length
+          };
+          this.setState({ loadedCharacter: loadedCharacter, isLoading: false });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+  };
+
   componentDidUpdate(prevProps) {
     console.log('Component did update');
     if (prevProps.selectedChar !== this.props.selectedChar) {
@@ -31,39 +64,6 @@ const Character = props =>  {
   useEffect(() => {
     fetchData();
   }, []);
-
-  // fetchData = () => {
-  const fetchData = () => {
-    console.log(
-      'Sending Http request for new character with id ' +
-        this.props.selectedChar
-    );
-    this.setState({ isLoading: true });
-    fetch('https://swapi.co/api/people/' + this.props.selectedChar)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Could not fetch person!');
-        }
-        return response.json();
-      })
-      .then(charData => {
-        const loadedCharacter = {
-          id: this.props.selectedChar,
-          name: charData.name,
-          height: charData.height,
-          colors: {
-            hair: charData.hair_color,
-            skin: charData.skin_color
-          },
-          gender: charData.gender,
-          movieCount: charData.films.length
-        };
-        this.setState({ loadedCharacter: loadedCharacter, isLoading: false });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
 
   // componentWillUnmount() {
   //   console.log('Too soon...');

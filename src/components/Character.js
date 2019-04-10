@@ -51,12 +51,12 @@ const Character = props =>  {
         });
   };
 
-  componentDidUpdate(prevProps) {
-    console.log('Component did update');
-    if (prevProps.selectedChar !== this.props.selectedChar) {
-      this.fetchData();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   console.log('Component did update');
+  //   if (prevProps.selectedChar !== this.props.selectedChar) {
+  //     this.fetchData();
+  //   }
+  // }
 
   // componentDidMount() {
   //   this.fetchData();

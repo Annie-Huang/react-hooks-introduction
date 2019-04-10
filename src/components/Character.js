@@ -29,7 +29,8 @@ const Character = props =>  {
     this.fetchData();
   }
 
-  fetchData = () => {
+  // fetchData = () => {
+  const fetchData = () => {
     console.log(
       'Sending Http request for new character with id ' +
         this.props.selectedChar
@@ -61,9 +62,9 @@ const Character = props =>  {
       });
   };
 
-  componentWillUnmount() {
-    console.log('Too soon...');
-  }
+  // componentWillUnmount() {
+  //   console.log('Too soon...');
+  // }
 
   // render() {
   //   let content = <p>Loading Character...</p>;

@@ -24,7 +24,8 @@ const Character = props =>  {
         'Sending Http request for new character with id ' +
         props.selectedChar
     );
-    this.setState({ isLoading: true });
+    // this.setState({ isLoading: true });
+    setIsLoading(true);
     fetch('https://swapi.co/api/people/' + props.selectedChar)
         .then(response => {
           if (!response.ok) {
@@ -44,10 +45,13 @@ const Character = props =>  {
             gender: charData.gender,
             movieCount: charData.films.length
           };
-          this.setState({ loadedCharacter: loadedCharacter, isLoading: false });
+          // this.setState({ loadedCharacter: loadedCharacter, isLoading: false });
+          setIsLoading(false);
+          setLoadedCharacter(loadedCharacter);
         })
         .catch(err => {
           console.log(err);
+          setIsLoading(false);
         });
   };
 

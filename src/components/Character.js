@@ -22,10 +22,10 @@ const Character = props =>  {
   const fetchData = () => {
     console.log(
         'Sending Http request for new character with id ' +
-        this.props.selectedChar
+        props.selectedChar
     );
     this.setState({ isLoading: true });
-    fetch('https://swapi.co/api/people/' + this.props.selectedChar)
+    fetch('https://swapi.co/api/people/' + props.selectedChar)
         .then(response => {
           if (!response.ok) {
             throw new Error('Could not fetch person!');
@@ -34,7 +34,7 @@ const Character = props =>  {
         })
         .then(charData => {
           const loadedCharacter = {
-            id: this.props.selectedChar,
+            id: props.selectedChar,
             name: charData.name,
             height: charData.height,
             colors: {

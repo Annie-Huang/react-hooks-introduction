@@ -36,7 +36,7 @@ const CharPicker = props => {
 
     // this.setState({ isLoading: true });
     setIsLoading(true);
-    fetch('https://swapi.co/api/people')
+/*    fetch('https://swapi.co/api/people')
         .then(response => {
           if (!response.ok) {
             throw new Error('Failed to fetch.');
@@ -61,7 +61,8 @@ const CharPicker = props => {
         .catch(err => {
           console.log(err);
           setIsLoading(false);
-        });
+        });*/
+
   }, []);
   // https://reactjs.org/docs/hooks-effect.html
     // If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array ([]) as a second argument.

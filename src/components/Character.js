@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Summary from './Summary';
 
@@ -25,9 +25,12 @@ const Character = props =>  {
     }
   }
 
-  componentDidMount() {
-    this.fetchData();
-  }
+  // componentDidMount() {
+  //   this.fetchData();
+  // }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   // fetchData = () => {
   const fetchData = () => {

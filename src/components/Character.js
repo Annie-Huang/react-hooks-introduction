@@ -8,6 +8,7 @@ const Character = props =>  {
   const [loadedCharacter, setLoadedCharacter] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  console.log('Rendering...');
 
   // shouldComponentUpdate(nextProps, nextState) {
   //   console.log('shouldComponentUpdate');
@@ -132,3 +133,17 @@ const Character = props =>  {
 // Class components can bail out from rendering when their input props are the same using PureComponent or shouldComponentUpdate.
 // Now you can do the same with function components by wrapping them in React.memo.
 export default React.memo(Character);
+
+// // Or you can do this, but it work as a opposite logic of the shouldComponentUpdate
+// // shouldComponentUpdate(nextProps, nextState) {
+// //   console.log('shouldComponentUpdate');
+// //   return (
+// //     nextProps.selectedChar !== this.props.selectedChar ||
+// //     nextState.loadedCharacter.id !== this.state.loadedCharacter.id ||
+// //     nextState.isLoading !== this.state.isLoading
+// //   );
+// // }
+// export default React.memo(Character, (prevProps, nextProps) => {
+//   // You return true if you don't want to revender....
+//   return nextProps.selectedChar === prevProps.selectedChar
+// });

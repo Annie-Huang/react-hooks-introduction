@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from 'react';
 
+import { useHttp } from '../hooks/http';
+
 import './CharPicker.css';
 
 // class CharPicker extends Component {
@@ -7,6 +9,11 @@ const CharPicker = props => {
   // state = { characters: [], isLoading: false };
   const [loadedChars, setLoadedChars] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  // You must always call Hooks, whether it will be official one or custom made one, from the top of the functional class
+  // And it will never be nested in another method or nested in if statement or for loop. It will just be in the 1st level underneath functional class
+  useHttp('https://swapi.co/api/people', []);
+
 
   // componentDidMount() {
   //   this.setState({ isLoading: true });
@@ -31,39 +38,44 @@ const CharPicker = props => {
   //       console.log(err);
   //     });
   // }
+/*
+
   useEffect(() => {
     // console.log('useEffect runs');
 
     // this.setState({ isLoading: true });
     setIsLoading(true);
-/*    fetch('https://swapi.co/api/people')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to fetch.');
-          }
-          return response.json();
-        })
-        .then(charData => {
-          const selectedCharacters = charData.results.slice(0, 5);
-          // this.setState({
-          //   characters: selectedCharacters.map((char, index) => ({
-          //     name: char.name,
-          //     id: index + 1
-          //   })),
-          //   isLoading: false
-          // });
-          setIsLoading(false);
-          setLoadedChars(selectedCharacters.map((char, index) => ({
-            name: char.name,
-            id: index + 1
-          })));
-        })
-        .catch(err => {
-          console.log(err);
-          setIsLoading(false);
-        });*/
+    // fetch('https://swapi.co/api/people')
+    //     .then(response => {
+    //       if (!response.ok) {
+    //         throw new Error('Failed to fetch.');
+    //       }
+    //       return response.json();
+    //     })
+    //     .then(charData => {
+    //       const selectedCharacters = charData.results.slice(0, 5);
+    //       // this.setState({
+    //       //   characters: selectedCharacters.map((char, index) => ({
+    //       //     name: char.name,
+    //       //     id: index + 1
+    //       //   })),
+    //       //   isLoading: false
+    //       // });
+    //       setIsLoading(false);
+    //       setLoadedChars(selectedCharacters.map((char, index) => ({
+    //         name: char.name,
+    //         id: index + 1
+    //       })));
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //       setIsLoading(false);
+    //     });
 
   }, []);
+
+*/
+
   // https://reactjs.org/docs/hooks-effect.html
     // If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array ([]) as a second argument.
     // This tells React that your effect doesn’t depend on any values from props or state, so it never needs to re-run.

@@ -15,12 +15,15 @@ const CharPicker = props => {
   // useHttp('https://swapi.co/api/people', []);
   const [isLoading, fetchedData] = useHttp('https://swapi.co/api/people', []);
 
-  const selectedCharacters = fetchedData.result
-      .slice(0, 5)
-      .map((char, index) => ({
-        name: char.name,
-        id: index + 1
-      }));
+  // Need to set intial value of featchedData to be [] because the initial value of fetchedData in http.js is null.
+  const selectedCharacters = fetchedData
+      ? fetchedData.results
+          .slice(0, 5)
+          .map((char, index) => ({
+            name: char.name,
+            id: index + 1
+          }))
+      : [];
 
   // componentDidMount() {
   //   this.setState({ isLoading: true });

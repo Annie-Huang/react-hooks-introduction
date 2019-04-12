@@ -7,13 +7,20 @@ import './CharPicker.css';
 // class CharPicker extends Component {
 const CharPicker = props => {
   // state = { characters: [], isLoading: false };
-  const [loadedChars, setLoadedChars] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [loadedChars, setLoadedChars] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
 
   // You must always call Hooks, whether it will be official one or custom made one, from the top of the functional class
   // And it will never be nested in another method or nested in if statement or for loop. It will just be in the 1st level underneath functional class
-  useHttp('https://swapi.co/api/people', []);
+  // useHttp('https://swapi.co/api/people', []);
+  const [isLoading, fetchedData] = useHttp('https://swapi.co/api/people', []);
 
+  const selectedCharacters = fetchedData.result
+      .slice(0, 5)
+      .map((char, index) => ({
+        name: char.name,
+        id: index + 1
+      }));
 
   // componentDidMount() {
   //   this.setState({ isLoading: true });
@@ -117,8 +124,8 @@ const CharPicker = props => {
 
   if (
       !isLoading &&
-      loadedChars &&
-      loadedChars.length > 0
+      selectedCharacters &&
+      selectedCharacters.length > 0
   ) {
     content = (
         <select
@@ -126,7 +133,7 @@ const CharPicker = props => {
             value={props.selectedChar}
             className={props.side}
         >
-          {loadedChars.map(char => (
+          {selectedCharacters.map(char => (
               <option key={char.id} value={char.id}>
                 {char.name}
               </option>
@@ -135,7 +142,7 @@ const CharPicker = props => {
     );
   } else if (
       !isLoading &&
-      (!loadedChars || loadedChars.length === 0)
+      (!selectedCharacters || selectedCharacters.length === 0)
   ) {
     content = <p>Could not fetch any data.</p>;
   }
